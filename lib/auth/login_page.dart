@@ -64,11 +64,15 @@ class _LoginPageState extends State<LoginPage> {
           contentPadding: EdgeInsets.all(8.0),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            borderSide: BorderSide(color: Colors.cyan),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(241, 255, 229, 82),
+            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            borderSide: BorderSide(color: Colors.cyan),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(241, 255, 229, 82),
+            ),
           ),
           border: OutlineInputBorder(),
         ),
@@ -81,6 +85,7 @@ class _LoginPageState extends State<LoginPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextFormField(
         enabled: true,
+        obscureText: true,
         onChanged: (value) {
           password = value;
         },
@@ -90,11 +95,15 @@ class _LoginPageState extends State<LoginPage> {
           contentPadding: EdgeInsets.all(8.0),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            borderSide: BorderSide(color: Colors.cyan),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(241, 255, 229, 82),
+            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            borderSide: BorderSide(color: Colors.cyan),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(241, 255, 229, 82),
+            ),
           ),
           border: OutlineInputBorder(),
         ),
@@ -110,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: Colors.blue,
+          backgroundColor: const Color.fromARGB(241, 255, 229, 82),
         ),
         onPressed: () {
           String text = ""; //nyimpen kata buat login gagal or berhasil
@@ -139,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
           SnackBar snackBar = SnackBar(content: Text(text));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
-        child: Text("Login"),
+        child: Text("Login", style: TextStyle(color: Colors.black)),
       ),
     );
   }

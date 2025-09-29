@@ -22,18 +22,21 @@ class HomePage extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
                 color: Color.fromARGB(255, 0, 0, 0),
+                fontFamily: 'Poppins',
               ),
             ),
-            const SizedBox(height: 4), // Memberikan jarak antar teks
+            const SizedBox(height: 4),
             const Text(
-              'Mau Makan Apa Hari Ini?',
+              'Mau makan apa hari ini?',
               style: TextStyle(
                 fontSize: 11,
                 color: Color.fromARGB(255, 0, 0, 0),
+                fontFamily: 'Poppins',
               ),
             ),
           ],
         ),
+
         actions: [
           IconButton(
             onPressed: () {
@@ -52,6 +55,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -66,7 +70,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Text("Daftar Menu"),
+            Text(
+              "daftar menu : ",
+              style: TextStyle(fontSize: 28, fontFamily: 'Poppins'),
+            ),
             Padding(
               padding: const EdgeInsets.all(20),
               child: GridView.builder(
@@ -96,7 +103,7 @@ class HomePage extends StatelessWidget {
       onTap: () {},
       child: Container(
         width: 250,
-        height: 450,
+        height: 550,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: const Color.fromARGB(241, 255, 229, 82),
@@ -118,15 +125,19 @@ class HomePage extends StatelessWidget {
 
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-              child: Image.asset(
-                foodList[index].imageUrl,
-                fit: BoxFit.cover, // Mengisi ruang yang tersedia tanpa distorsi
-                height: 120, // Atur tinggi gambar agar konsisten
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                child: Image.asset(
+                  foodList[index].imageUrl,
+                  fit: BoxFit
+                      .cover, // Mengisi ruang yang tersedia tanpa distorsi
+                  height: 150, // Atur tinggi gambar agar konsisten
+                  width: 250,
+                ),
               ),
             ),
             // Tambahkan padding untuk konten di bawah gambar
@@ -137,32 +148,31 @@ class HomePage extends StatelessWidget {
                 // Untuk memusatkan konten secara horizontal
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 8),
                   Text(
                     foodList[index].name,
                     style: const TextStyle(fontSize: 12),
                     maxLines: 1, // Agar nama tidak melebihi satu baris
                     overflow: TextOverflow
-                        .ellipsis, // Tambahkan ... jika terlalu panjang
+                        .ellipsis, // Tambahin ... jika terlalu panjang
                   ),
                   Text(
                     "Harga : ${foodList[index].price}",
                     style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 12,
+                      fontFamily: 'Poppins',
                     ),
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
                     width: double.infinity, // Tombol mengisi seluruh lebar
                     child: ElevatedButton(
-                      // style: ElevatedButton.styleFrom(
-                      //   backgroundColor: const Color.fromARGB(
-                      //     241,
-                      //     255,
-                      //     229,
-                      //     82,
-                      //   ),
-                      // ),
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all<Size>(
+                          Size(200, 35), // Lebar 200, tinggi 50
+                        ),
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -173,8 +183,10 @@ class HomePage extends StatelessWidget {
                           ),
                         );
                       },
-
-                      child: const Text("Order"),
+                      child: const Text(
+                        "Order",
+                        style: TextStyle(fontFamily: 'Poppins'),
+                      ),
                     ),
                   ),
                 ],

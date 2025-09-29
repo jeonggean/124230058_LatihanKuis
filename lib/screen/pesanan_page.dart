@@ -29,8 +29,12 @@ class _PesananFoodState extends State<PesananFood> {
 
   void _hitungTotalHarga() {
     final int jumlah = int.tryParse(_jumlahController.text) ?? 0;
-    final int hargaSatuan = foodList[widget.index].price as int;
+    String cleanedPriceString = foodList[widget.index].price
+        .replaceAll('Rp ', '')
+        .replaceAll('.', '');
 
+    // Konversi string yang sudah bersih menjadi integer
+    final int hargaSatuan = int.parse(cleanedPriceString);
     setState(() {
       totalHarga = jumlah * hargaSatuan;
       // Reset visibility when the text changes
@@ -52,7 +56,10 @@ class _PesananFoodState extends State<PesananFood> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail Order"),
+        title: const Text(
+          "Detail Order",
+          style: TextStyle(fontFamily: 'Poppins'),
+        ),
         elevation: 0,
         backgroundColor: const Color.fromARGB(241, 255, 229, 82),
       ),
@@ -69,19 +76,36 @@ class _PesananFoodState extends State<PesananFood> {
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins',
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                "Harga: Rp ${foodList[widget.index].price}",
-                style: const TextStyle(fontSize: 18, color: Colors.grey),
+                "Harga: ${foodList[widget.index].price}",
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.grey,
+                  fontFamily: 'Poppins',
+                ),
               ),
               const SizedBox(height: 24),
               TextField(
                 controller: _jumlahController,
                 decoration: const InputDecoration(
-                  labelText: "Masukkan Jumlah Order",
+                  labelText: "Masukkan jumlah order",
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(
+                      color: const Color.fromARGB(241, 255, 229, 82),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(
+                      color: const Color.fromARGB(241, 255, 229, 82),
+                    ),
+                  ),
                 ),
                 keyboardType: TextInputType.number,
               ),
@@ -90,7 +114,7 @@ class _PesananFoodState extends State<PesananFood> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 251, 198, 228),
+                    backgroundColor: const Color.fromARGB(241, 255, 229, 82),
                     foregroundColor: Colors.black,
                   ),
                   onPressed: _submitOrder,
@@ -104,6 +128,7 @@ class _PesananFoodState extends State<PesananFood> {
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
                   ),
                 ),
             ],
